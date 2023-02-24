@@ -1,0 +1,20 @@
+.mainland {
+
+    background-image: url("https://miro.medium.com/max/2000/1*qbcbKU_jLBNl__tjrA1U0Q.jpeg");
+    height: 1000px;
+    margin-top: 0px;
+    padding: 200px;
+    background-color: #cccccc;
+    background-repeat:inherit;
+    width: 1600px;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: #054d5a;
+    background-image: radial-gradient(#11581E, #09327e), url("https://miro.medium.com/max/2000/1*qbcbKU_jLBNl__tjrA1U0Q.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Inconsolata", Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: rgba(128, 255, 128, 0.8);
+    text-shadow: 0 0 1ex #6933ff, 0 0 2px rgba(255, 255, 255, 0.8);
+}

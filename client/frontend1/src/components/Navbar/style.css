@@ -1,0 +1,10 @@
+::before, ::after{
+    color: transparent;
+}
+
+Nav{
+    font-size: 1.2rem;
+}
+Nav svg {
+    font-size: 1.5rem;
+}

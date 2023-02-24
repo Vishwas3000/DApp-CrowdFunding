@@ -1,0 +1,40 @@
+{
+  "address": "0xb722c88cB971131C8e6C36528e38DC0De587fb5b",
+  "abi": [],
+  "transactionHash": "0x92eb29d7cc11aa552b60eb25be7eb3b4e41821e7e2479db57d34f024749415b0",
+  "receipt": {
+    "to": null,
+    "from": "0x2254E289dD43B47F330027d8661b22fF261610c7",
+    "contractAddress": "0xb722c88cB971131C8e6C36528e38DC0De587fb5b",
+    "transactionIndex": 18,
+    "gasUsed": "67054",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x035f5c2f9c062e1690210ddc7301a24e4bc110688eecb5eeb0d5e94c52f858a2",
+    "transactionHash": "0x92eb29d7cc11aa552b60eb25be7eb3b4e41821e7e2479db57d34f024749415b0",
+    "logs": [],
+    "blockNumber": 8512049,
+    "cumulativeGasUsed": "3674774",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 3,
+  "solcInputHash": "c511988dd149955d8e15efffd54d15cf",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/Stake.sol\":\"Stake\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/CampaignLib.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.8;\\r\\n\\r\\nerror CampaignLib__NoEnoughAmount();\\r\\n\\r\\nlibrary CampaignLib {\\r\\n    enum permission {\\r\\n        PROCESSING,\\r\\n        ACCEPTED,\\r\\n        REJECTED\\r\\n    }\\r\\n\\r\\n    enum vote {\\r\\n        ACCEPT,\\r\\n        REJECT\\r\\n    }\\r\\n\\r\\n    function calcualtePercent(\\r\\n        uint256 amount,\\r\\n        uint256 bps,\\r\\n        uint256 totalAmount\\r\\n    ) public pure returns (uint256) {\\r\\n        if (amount * bps < totalAmount) {\\r\\n            revert CampaignLib__NoEnoughAmount();\\r\\n        }\\r\\n        return (amount * bps) / totalAmount;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xf9eddac3c6d5618b588f02b392d60d373125320ee002318e138e3f1dcabbf9da\",\"license\":\"MIT\"},\"contracts/Stake.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\n\\r\\npragma solidity ^0.8.8;\\r\\n\\r\\nimport \\\"./CampaignLib.sol\\\";\\r\\n\\r\\n// TO DO\\r\\n//\\r\\n// Start the stake event\\r\\n// contributers can vote\\r\\n// End the event\\r\\n// Send the result and withdraw if needed\\r\\n//\\r\\n\\r\\nerror Stake__DeadlineNotReached();\\r\\nerror Stake__DeadLineReached();\\r\\nerror Stake__ContributerAlreadyVoted();\\r\\n\\r\\ncontract Stake {\\r\\n    struct Request {\\r\\n        mapping(address => bool) contributersVoted;\\r\\n        uint256 durationOfRequest;\\r\\n        uint256 requestedAmount;\\r\\n        uint256 requestedTime;\\r\\n        address campaignAddress;\\r\\n        // Voting variables\\r\\n        uint256 totalAcceptVote;\\r\\n        uint256 totalRejectVote;\\r\\n        // status\\r\\n        CampaignLib.permission currentStatus;\\r\\n        bool amountRecieved;\\r\\n    }\\r\\n\\r\\n    modifier deadlineReached(Request storage request, bool requireReached) {\\r\\n        uint256 timeRemaining = timeLeft(request);\\r\\n        if (requireReached) {\\r\\n            if (timeRemaining > 0) {\\r\\n                revert Stake__DeadlineNotReached();\\r\\n            }\\r\\n            // require(timeRemaining == 0, \\\"Deadline has not reached\\\");\\r\\n        } else {\\r\\n            if (timeRemaining == 0) {\\r\\n                revert Stake__DeadLineReached();\\r\\n            }\\r\\n            // require(timeRemaining > 0, \\\"Deadline is already reached\\\");\\r\\n        }\\r\\n        _;\\r\\n    }\\r\\n\\r\\n    // Add a modifier if all the contributers voted\\r\\n\\r\\n    function stake(\\r\\n        Request storage request,\\r\\n        CampaignLib.vote myVote,\\r\\n        address contributer,\\r\\n        uint256 weightage\\r\\n    ) internal deadlineReached(request, false) {\\r\\n        if (request.contributersVoted[contributer]) {\\r\\n            revert Stake__ContributerAlreadyVoted();\\r\\n        }\\r\\n        request.contributersVoted[contributer] = true;\\r\\n        if (myVote == CampaignLib.vote.ACCEPT) {\\r\\n            request.totalAcceptVote += weightage;\\r\\n        } else {\\r\\n            request.totalRejectVote += weightage;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    // Make a function that gets call for chainlink\\r\\n\\r\\n    function result(\\r\\n        Request storage request\\r\\n    ) internal deadlineReached(request, true) {\\r\\n        if (request.totalAcceptVote > request.totalRejectVote) {\\r\\n            request.currentStatus = CampaignLib.permission.ACCEPTED;\\r\\n        } else {\\r\\n            request.currentStatus = CampaignLib.permission.REJECTED;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    function timeLeft(\\r\\n        Request storage request\\r\\n    ) internal view returns (uint256 timeleft) {\\r\\n        uint256 deadline = request.requestedTime + request.durationOfRequest;\\r\\n        if (block.timestamp >= deadline) {\\r\\n            return 0;\\r\\n        } else {\\r\\n            return deadline - block.timestamp;\\r\\n        }\\r\\n    }\\r\\n\\r\\n    function getCurrentStatus(\\r\\n        Request storage request\\r\\n    ) internal view returns (CampaignLib.permission) {\\r\\n        return request.currentStatus;\\r\\n    }\\r\\n\\r\\n    function getRequestedAmount(\\r\\n        Request storage request\\r\\n    ) internal view returns (uint256) {\\r\\n        return request.requestedAmount;\\r\\n    }\\r\\n\\r\\n    function setRecieved(Request storage request) internal {\\r\\n        request.amountRecieved = true;\\r\\n    }\\r\\n\\r\\n    function getPermissionStatus(\\r\\n        Request storage request\\r\\n    ) internal view returns (CampaignLib.permission) {\\r\\n        return request.currentStatus;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0xee2d8e33326e8097a1c2fd0e780f397f82e20c6a70c5d275a3e9fe1eb0dd5558\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122049e0c7a2342b8258f250c3bae2c0bca325c32f4bae6afd7400d88519df43d99564736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122049e0c7a2342b8258f250c3bae2c0bca325c32f4bae6afd7400d88519df43d99564736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

@@ -1,0 +1,701 @@
+:root{
+  --color-steelblue: steelblue;
+}
+.mask-group-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1440px;
+    height: 672px;
+    object-fit: cover;
+  }
+  .fundraising {
+    color: var(--color-steelblue);
+  }
+  .the-future-of-container {
+    position: absolute;
+    top: 135.94px;
+    left: 165px;
+    font-size: 51.88px;
+    letter-spacing: 0.24px;
+    line-height: 66.03px;
+    display: inline-block;
+    text-align: left;
+    width: 540px;
+  }
+  .a-decentralized-open-source,
+  .lorem-and-120 {
+    position: absolute;
+    letter-spacing: 0.3px;
+    line-height: 27.5px;
+  }
+  .a-decentralized-open-source {
+    top: 294px;
+    left: 165px;
+    display: inline-block;
+    width: 445px;
+  }
+  .lorem-and-120 {
+    top: 535px;
+    left: 283px;
+  }
+  .btn-rect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-steelblue);
+    width: 139px;
+    height: 48px;
+  }
+  .label {
+    position: absolute;
+    top: 15px;
+    left: 18px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.3px;
+    line-height: 18px;
+    display: flex;
+    font-family: var(--font-poppins);
+    color: var(--color-white);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 103px;
+    height: 18px;
+  }
+  .btn-rect-parent {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 427px;
+    left: 165px;
+    width: 139px;
+    height: 48px;
+  }
+  .hero-section-child {
+    position: absolute;
+    top: 523.85px;
+    left: 165.44px;
+    width: 97.11px;
+    height: 44.3px;
+    object-fit: cover;
+  }
+  .hero-section,
+  .rect {
+    position: absolute;
+    left: 0;
+    width: 1440px;
+  }
+  .hero-section {
+    top: 0px;
+    height: 672px;
+    width: 100%;
+    background-color: black;
+    text-align: justify;
+    color: white;
+  }
+  .rect {
+    top: 0;
+    background-color: var(--color-gray-100);
+    height: 88px;
+  }
+  .contribute,
+  .home,
+  .start-campaign {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.2px;
+    line-height: 18px;
+    font-weight: 600;
+    font-family: var(--font-poppins);
+    color: var(--color-steelblue);
+    text-align: left;
+    display: inline-block;
+  }
+  .contribute,
+  .start-campaign {
+    left: 86px;
+    color: var(--color-gray-200);
+    text-align: center;
+  }
+  .contribute {
+    left: 236.74px;
+    text-align: left;
+  }
+  .btn-rect1,
+  .links {
+    position: absolute;
+    top: 14px;
+    left: 671px;
+    width: 316.74px;
+    height: 18px;
+  }
+  .btn-rect1 {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: var(--color-steelblue);
+    top: 0;
+    left: 0;
+    width: 83px;
+    height: 42px;
+  }
+  .label1 {
+    position: absolute;
+    top: 12px;
+    left: 18px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.3px;
+    line-height: 18px;
+    display: flex;
+    font-family: var(--font-poppins);
+    color: var(--color-white);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 47px;
+    height: 18px;
+  }
+  .btn-rect-group {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 1027px;
+    width: 83px;
+    height: 42px;
+  }
+  .cryptofunder {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    letter-spacing: 0.24px;
+  }
+  .links-parent,
+  .nav-bar {
+    position: absolute;
+    top: 23px;
+    left: 165px;
+    width: 1110px;
+    height: 42px;
+  }
+  .nav-bar {
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 88px;
+    text-align: left;
+    font-size: 24px;
+    color: var(--color-gray-200);
+    font-family: var(--font-poppins);
+  }
+  .security,
+  .why-choose-us1 {
+    position: absolute;
+    letter-spacing: 0.1px;
+  }
+  .why-choose-us1 {
+    top: 0;
+    left: 412px;
+    font-size: var(--font-size-3xl);
+    line-height: 40px;
+  }
+  .security {
+    top: 60.67px;
+    left: 0;
+    line-height: 24px;
+    display: inline-block;
+    width: 350px;
+  }
+  .vector-icon {
+    position: absolute;
+    top: -1px;
+    left: 160.67px;
+    width: 28.67px;
+    height: 35.33px;
+  }
+  .cryptofunder-uses-blockchain {
+    position: absolute;
+    top: 96.67px;
+    left: 13px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    display: inline-block;
+    width: 324px;
+  }
+  .security-parent {
+    position: absolute;
+    top: 122.33px;
+    left: 380px;
+    width: 350px;
+    height: 196.67px;
+  }
+  .cryptofunder-is-decentralised,
+  .decentralisation {
+    position: absolute;
+    top: 82px;
+    left: 0;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    display: inline-block;
+    width: 350px;
+  }
+  .cryptofunder-is-decentralised {
+    top: 118px;
+    left: 12px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    width: 326px;
+  }
+  .group-child {
+    position: absolute;
+    top: 0;
+    left: 144px;
+    width: 62px;
+    height: 60.95px;
+  }
+  .decentralisation-parent {
+    position: absolute;
+    top: 101px;
+    left: 0;
+    width: 350px;
+    height: 218px;
+  }
+  .cryptofunder-can-use,
+  .smart-contracts {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    display: inline-block;
+    width: 350px;
+  }
+  .cryptofunder-can-use {
+    top: 108px;
+    left: 9px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    width: 332px;
+  }
+  .vector-icon1 {
+    position: absolute;
+    top: 0;
+    left: 158px;
+    width: 35px;
+    height: 45px;
+  }
+  .smart-contracts-parent {
+    position: absolute;
+    top: 111px;
+    left: 760px;
+    width: 350px;
+    height: 208px;
+  }
+  .accountability,
+  .the-transparency-and {
+    position: absolute;
+    top: 61px;
+    left: 0;
+    letter-spacing: 0.1px;
+    line-height: 24px;
+    display: inline-block;
+    width: 350px;
+  }
+  .the-transparency-and {
+    top: 97px;
+    left: 12px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    width: 326px;
+  }
+  .vector-icon2 {
+    position: absolute;
+    top: -0.5px;
+    left: 154.5px;
+    width: 41px;
+    height: 50px;
+  }
+  .accountability-parent {
+    position: absolute;
+    top: 395px;
+    left: 0;
+    width: 350px;
+    height: 217px;
+  }
+  .cryptofunder-can-use1 {
+    position: absolute;
+    top: 97px;
+    left: 13px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    display: inline-block;
+    width: 324px;
+  }
+  .group-item,
+  .subtract-icon {
+    position: absolute;
+    top: 9.14px;
+    left: 161.3px;
+    width: 27.69px;
+    height: 30.68px;
+  }
+  .group-item {
+    top: 0;
+    left: 150.5px;
+    width: 49px;
+    height: 49px;
+  }
+  .tokenisation-parent {
+    position: absolute;
+    top: 395px;
+    left: 380px;
+    width: 350px;
+    height: 217px;
+  }
+  .cryptofunder-can-use2 {
+    position: absolute;
+    top: 97px;
+    left: 15px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    display: inline-block;
+    width: 320px;
+  }
+  .vector-icon3 {
+    position: absolute;
+    top: 0;
+    left: 146px;
+    width: 52px;
+    height: 45px;
+  }
+  .governance-parent,
+  .why-choose-us {
+    position: absolute;
+    top: 395px;
+    left: 760px;
+    width: 350px;
+    height: 217px;
+  }
+  .why-choose-us {
+    top: 837px;
+    left: 165px;
+    width: 1110px;
+    height: 612px;
+    font-size: var(--font-size-xl);
+    color: var(--color-gray-200);
+  }
+  .watch-on-youtube-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-gray-200);
+    width: 1440px;
+    height: 546px;
+  }
+  .democratizing-access-to {
+    top: 129px;
+    left: 165px;
+    font-size: var(--font-size-3xl);
+    display: inline-block;
+    width: 384px;
+  }
+  .democratizing-access-to,
+  .helping-bring-game-changing,
+  .learn-more {
+    position: absolute;
+    letter-spacing: 0.2px;
+    line-height: 137%;
+  }
+  .helping-bring-game-changing {
+    top: 334px;
+    left: 165px;
+    font-size: var(--font-size-lg);
+    display: inline-block;
+    width: 369px;
+  }
+  .learn-more {
+    top: 379px;
+    left: 230px;
+    font-size: var(--font-size-base);
+    text-decoration: underline;
+    color: var(--color-steelblue);
+  }
+  .mask-group-icon1,
+  .wrapper {
+    position: absolute;
+    top: 83px;
+    left: 735px;
+    width: 540px;
+    height: 363px;
+  }
+  .mask-group-icon1 {
+    object-fit: cover;
+  }
+  .wrapper {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.62),
+      transparent 48.96%,
+      rgba(0, 0, 0, 0.44)
+    );
+  }
+  .image-7-icon {
+    position: absolute;
+    top: 236px;
+    left: 965px;
+    width: 80px;
+    height: 55px;
+    object-fit: cover;
+  }
+  .the-future-of,
+  .watch-on-youtube1 {
+    position: absolute;
+    top: 100px;
+    left: 753px;
+    letter-spacing: 0.2px;
+    line-height: 137%;
+    text-align: justify;
+  }
+  .watch-on-youtube1 {
+    top: 310px;
+    left: 907px;
+    font-weight: 600;
+  }
+  .watch-on-youtube {
+    position: absolute;
+    top: 1554px;
+    left: 0;
+    width: 1440px;
+    height: 546px;
+    text-align: left;
+    font-size: var(--font-size-2xl);
+  }
+  .what-our-customers {
+    position: absolute;
+    top: 0;
+    left: 330px;
+    font-size: var(--font-size-3xl);
+    letter-spacing: 0.1px;
+    line-height: 40px;
+    color: var(--color-gray-200);
+  }
+  .group-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-steelblue);
+    width: 350px;
+    height: 230px;
+  }
+  .mask-group-icon2 {
+    position: absolute;
+    top: 195px;
+    left: 140.09px;
+    width: 69px;
+    height: 69px;
+    object-fit: cover;
+  }
+  .icon {
+    position: absolute;
+    top: 15px;
+    left: 148px;
+    width: 55px;
+    height: 44px;
+  }
+  .cryptofunder-gave-me {
+    position: absolute;
+    top: 78px;
+    left: 14px;
+    letter-spacing: 0.2px;
+    line-height: 137%;
+    display: inline-block;
+    width: 322px;
+  }
+  .rectangle-parent {
+    position: absolute;
+    top: 99px;
+    left: 380px;
+    width: 350px;
+    height: 264px;
+    color: var(--color-white);
+  }
+  .rectangle-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-aliceblue);
+    width: 350px;
+    height: 230px;
+  }
+  .mask-group-icon3 {
+    position: absolute;
+    top: 195px;
+    left: 141.09px;
+    width: 69px;
+    height: 69px;
+    object-fit: cover;
+  }
+  .icon1 {
+    position: absolute;
+    top: 17px;
+    left: 147px;
+    width: 55px;
+    height: 44px;
+  }
+  .i-love-itthe {
+    position: absolute;
+    top: 79px;
+    left: 10px;
+    letter-spacing: 0.2px;
+    line-height: 137%;
+    display: inline-block;
+    width: 329px;
+  }
+  .rectangle-group {
+    position: absolute;
+    top: 141px;
+    left: 0;
+    width: 350px;
+    height: 264px;
+  }
+  .i-am-amazed {
+    position: absolute;
+    top: 79px;
+    left: 20px;
+    letter-spacing: 0.2px;
+    line-height: 137%;
+    display: inline-block;
+    width: 309px;
+  }
+  .rectangle-container,
+  .testimonials {
+    position: absolute;
+    top: 141px;
+    left: 760px;
+    width: 350px;
+    height: 264px;
+  }
+  .testimonials {
+    top: 2191px;
+    left: 165px;
+    width: 1110px;
+    height: 405px;
+    font-size: var(--font-size-base);
+    color: var(--color-black);
+  }
+  .ready-to-get-started-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--color-gray-200);
+    width: 1440px;
+    height: 316px;
+  }
+  .do-you-have,
+  .ready-to-get {
+    position: absolute;
+    letter-spacing: 0.1px;
+  }
+  .ready-to-get {
+    top: 53px;
+    left: 535px;
+    line-height: 40px;
+  }
+  .do-you-have {
+    top: 119px;
+    left: 308px;
+    font-size: var(--font-size-2xl);
+    display: inline-block;
+    width: 826px;
+  }
+  .btn-rect2 {
+    border: 0;
+    background-color: var(--color-steelblue);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 179px;
+    height: 48px;
+  }
+  .label2 {
+    position: absolute;
+    top: 15px;
+    left: 26px;
+    font-size: var(--font-size-base);
+    letter-spacing: 0.3px;
+    line-height: 18px;
+    font-family: var(--font-poppins);
+    color: var(--color-white);
+    text-align: center;
+  }
+  .btn-rect-container {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 217px;
+    left: 631px;
+    width: 179px;
+    height: 48px;
+  }
+  .footer-child,
+  .ready-to-get-started {
+    position: absolute;
+    left: 0;
+    width: 1440px;
+  }
+  .ready-to-get-started {
+    top: 2687px;
+    height: 316px;
+    font-size: var(--font-size-3xl);
+  }
+  .footer-child {
+    top: 0;
+    background-color: var(--color-gray-100);
+    height: 69px;
+  }
+  .cryptofunder-all-rights {
+    position: absolute;
+    top: 24px;
+    left: 570px;
+    letter-spacing: 0.2px;
+    font-weight: 600;
+  }
+  .footer {
+    position: absolute;
+    top: 3003px;
+    left: 0;
+    width: 1440px;
+    height: 69px;
+    color: var(--color-gray-200);
+  }
+  .website-tech {
+    position: relative;
+    background-color: var(--color-white);
+    width: 100%;
+    height: 2072px;
+    overflow: hidden;
+    text-align: center;
+    font-size: var(--font-size-lg);
+    color: var(--color-white);
+    font-family: var(--font-poppins);
+  }
+  
