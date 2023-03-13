@@ -1,1 +1,57 @@
-[{"type":"event","anonymous":false,"name":"CampaignCreated","inputs":[{"type":"address","name":"campaignCreator","indexed":false},{"type":"uint256","name":"campaginId","indexed":false},{"type":"address","name":"campaignAddress","indexed":false}]},{"type":"function","name":"createCampaign","constant":false,"payable":false,"inputs":[{"type":"uint256","name":"_campaignGoal"},{"type":"uint256","name":"_minContribution"}],"outputs":[{"type":"address"}]},{"type":"function","name":"getAllCampaignOfOwner","constant":true,"stateMutability":"view","payable":false,"inputs":[{"type":"address","name":"owner"}],"outputs":[{"type":"address[]"}]},{"type":"function","name":"getCampaign","constant":true,"stateMutability":"view","payable":false,"inputs":[{"type":"address","name":"owner"},{"type":"uint256","name":"campaignId"}],"outputs":[{"type":"address"}]},{"type":"function","name":"getTotalCampaign","constant":true,"stateMutability":"view","payable":false,"inputs":[],"outputs":[{"type":"uint256"}]}]
+[
+    {
+        "type": "event",
+        "anonymous": false,
+        "name": "CampaignCreated",
+        "inputs": [
+            { "type": "address", "name": "campaignCreator", "indexed": false },
+            { "type": "uint256", "name": "campaginId", "indexed": false },
+            { "type": "address", "name": "campaignAddress", "indexed": false }
+        ]
+    },
+    {
+        "type": "function",
+        "name": "createCampaign",
+        "constant": false,
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            { "type": "uint256", "name": "_campaignGoal" },
+            { "type": "uint256", "name": "_minContribution" }
+        ],
+        "outputs": [{ "type": "address" }]
+    },
+    {
+        "type": "function",
+        "name": "getAllCampaignOfOwner",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [{ "type": "address", "name": "owner" }],
+        "outputs": [{ "type": "address[]" }]
+    },
+    {
+        "type": "function",
+        "name": "getCampaign",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [
+            { "type": "address", "name": "owner" },
+            { "type": "uint256", "name": "campaignId" }
+        ],
+        "outputs": [{ "type": "address" }]
+    },
+    {
+        "type": "function",
+        "name": "getTotalCampaign",
+        "constant": true,
+        "stateMutability": "view",
+        "payable": false,
+        "gas": 29000000,
+        "inputs": [],
+        "outputs": [{ "type": "uint256" }]
+    }
+]

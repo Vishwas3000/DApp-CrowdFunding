@@ -60,14 +60,13 @@ const WithdrawUtil = async (campaignAddress, requestId) => {
         await ConnectToContract(campaignAddress)
         const txResponse = await connectedContract.withdraw(requestId)
         txReciept = await txResponse.wait(BlockWaitTime)
+        if (txReciept.status == 1) {
+            retReq = { status: 200 }
+        }
     } catch (e) {
         error = e
         console.log(error)
-    }
-
-    if (txReciept.status == 1) {
-        retReq = { status: 200 }
-    } else {
+        handleError(error, campaignAddress)
         retReq = { statusbar: 400, msg: error }
     }
 
@@ -136,13 +135,13 @@ const StakeInRequestUtil = async (campaignAddress, requestId, voteValue) => {
         }
 
         txReciept = await txResponse.wait(BlockWaitTime)
-        console.log("----------------")
-        console.log(txResponse)
+
         console.log("----------------")
         console.log(txReciept)
     } catch (e) {
         error = e
-        console.log("error is ", JSON.stringify(e))
+        console.log("error is ", e)
+        handleError(error)
     }
 
     if (txReciept.status == 1) {
@@ -151,6 +150,27 @@ const StakeInRequestUtil = async (campaignAddress, requestId, voteValue) => {
         retReq = { status: 400, msg: error }
     }
     return retReq
+}
+async function handleError(error, campaignAddress = null) {
+    if (error.message.includes("Stake__ContributerAlreadyVoted()")) {
+        alert("Contributer already voted")
+    } else if (error.message.includes("Campaign__NotEnoughFundToVote()")) {
+        alert("Not Enoung Contribution to Vote / Not a contributer")
+    } else if (error.message.includes("Campaign__RequestRejected()")) {
+        alert("Request has been rejeted by the Crowd")
+    } else if (error.message.includes("Campaign__NotOwner")) {
+        alert("You are not the owner of the campaign")
+        const owner = await GetOwnerAddress(campaignAddress)
+        alert(`The Owner is: ${owner}`)
+    }
+}
+
+const GetOwnerAddress = async (campaignAddress) => {
+    await ConnectToContract(campaignAddress)
+
+    const requestInfo = await contract.getOwnerAddress()
+    console.log(`Contract owner is ${requestInfo}`)
+    return requestInfo
 }
 
 const GetRequestInfoUtil = async (campaignAddress, requestId) => {
