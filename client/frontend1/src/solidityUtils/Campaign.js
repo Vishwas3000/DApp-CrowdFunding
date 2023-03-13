@@ -61,13 +61,14 @@ const WithdrawUtil = async (campaignAddress, requestId) => {
         const txResponse = await connectedContract.withdraw(requestId)
         txReciept = await txResponse.wait(BlockWaitTime)
         if (txReciept.status == 1) {
+            console.log("transaction reciept: ", txReciept)
             retReq = { status: 200 }
         }
     } catch (e) {
         error = e
         console.log(error)
-        handleError(error, campaignAddress)
-        retReq = { statusbar: 400, msg: error }
+        const timeRemaining = await handleError(error, campaignAddress)
+        retReq = { statusbar: 400, msg: `Wait for ${timeRemaining}` }
     }
 
     return retReq
@@ -95,7 +96,7 @@ const MakeRequestUtil = async (
     try {
         let txResponse = await connectedContract.makeRequest(
             durationOfRequest,
-            withdrawAmount
+            ethers.utils.parseEther(withdrawAmount)
         )
 
         txReciept = await txResponse.wait(BlockWaitTime)
@@ -162,6 +163,19 @@ async function handleError(error, campaignAddress = null) {
         alert("You are not the owner of the campaign")
         const owner = await GetOwnerAddress(campaignAddress)
         alert(`The Owner is: ${owner}`)
+    } else if (error.message.includes("Stake__DeadlineNotReached")) {
+        console.log("the error msg ---------------------")
+        const inputStr = error.message
+        const jsonObject = JSON.parse(
+            inputStr.substring(
+                inputStr.indexOf("{"),
+                inputStr.lastIndexOf("}") + 1
+            )
+        )
+        const errorMsg = jsonObject.value.data.message
+        const errorCode = errorMsg.match(/\(([^)]+)\)/)[1]
+        console.log(errorCode)
+        return errorCode
     }
 }
 
@@ -243,6 +257,19 @@ const GetTotalFundsRaisedUtil = async (campaignAddress) => {
         return { status: 400, msg: error }
     }
 }
+const GetTotalBalanceInCampaign = async (campaignAddress) => {
+    try {
+        await ConnectToContract(campaignAddress)
+
+        const amount = await provider.getBalance(contract.address)
+        console.log(`Balance: ${ethers.utils.formatEther(amount)}`)
+        return { status: 200, msg: ethers.utils.formatEther(amount) }
+    } catch (error) {
+        console.log(error)
+        handleError(error)
+        return { status: 400, msg: "failed" }
+    }
+}
 
 export {
     ContributeUtil,
@@ -254,4 +281,5 @@ export {
     GetMinimumContrbutionLimitUtil,
     GetContributorsUtil,
     GetTotalFundsRaisedUtil,
+    GetTotalBalanceInCampaign,
 }

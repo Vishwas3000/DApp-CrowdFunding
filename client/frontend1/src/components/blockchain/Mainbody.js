@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import {
     GetContributorsUtil,
     GetTotalFundsRaisedUtil,
+    GetTotalBalanceInCampaign,
 } from "../../solidityUtils/Campaign"
 
 import "./css/profile.css"
@@ -11,6 +12,7 @@ import "./css/profile.css"
 export default function FundProfile({ info }) {
     const profile = useSelector((state) => state.fundr.fundr)
     const [fundRaised, setFundRaised] = useState("")
+    const [balanceFund, SetBalanceFund] = useState("")
     const [contributers, setContributers] = useState([])
 
     const handleGetContributers = async () => {
@@ -32,9 +34,16 @@ export default function FundProfile({ info }) {
         await setFundRaised(result.msg)
     }
 
+    const handleBalanceFund = async () => {
+        const result = await GetTotalBalanceInCampaign(profile.addr)
+        console.log(result)
+        SetBalanceFund(result.msg)
+    }
+
     useEffect(() => {
         handleGetTotalFunds()
         handleGetContributers()
+        handleBalanceFund()
     }, [])
 
     useEffect(() => {
@@ -82,7 +91,10 @@ export default function FundProfile({ info }) {
                     </p>
 
                     <p>
-                        <strong>Fund Rised</strong> : {fundRaised} BIT
+                        <strong>Fund Rised</strong> : {fundRaised} ETH
+                    </p>
+                    <p>
+                        <strong>Balance</strong> : {balanceFund} ETH
                     </p>
                 </div>
                 <div>

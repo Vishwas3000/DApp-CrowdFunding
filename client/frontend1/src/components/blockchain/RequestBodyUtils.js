@@ -34,16 +34,15 @@ export default function RequestBodyUtils({ data }) {
 
     const handleSubmitWithdraw = async () => {
         const res = await WithdrawUtil(profile.addr, data.rid) //Also pass in campaign address
+        console.log("result of withdraw: ", res)
 
         if (res.status === 200) {
             alert(
-                "Bingoo,Money transfered to your account! (amt : ",
-                res.withdrawedAmount,
-                " )"
+                `Bingoo,Money transfered to your account! (amt :${res.withdrawedAmount})`
             )
             return
         } else {
-            alert("Failed to withdraw your money ,  msg : ", res.msg)
+            alert(`Failed to withdraw your money ,  msg : ${res.msg}`)
         }
     }
 

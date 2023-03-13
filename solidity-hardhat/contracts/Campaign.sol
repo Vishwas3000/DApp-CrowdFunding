@@ -72,7 +72,7 @@ contract Campaign is Stake {
         ) {
             revert Campaign__RequestRejected();
         }
-        if(s_requests[requestIndex].amountRecieved==true){
+        if((s_requests[requestIndex].amountRecieved) == true){
             revert Campaign__AmountAlreadyReceived();
         }
         _;
@@ -109,7 +109,6 @@ contract Campaign is Stake {
 
         setRecieved(s_requests[requestIndex]);
         emit FundWithdrawed(amount);
-        s_requests[requestIndex].amountRecieved = true;
     }
 
     function makeRequest(
