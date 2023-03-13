@@ -43,11 +43,11 @@ async function updateContractAddresses() {
         console.log(`contract Address ${crowdFunding.address}`)
 
         if (!contractAddresses[chainId].includes(crowdFunding.address)) {
-            contractAddresses[chainId].push(crowdFunding.address)
+            contractAddresses[chainId] = [crowdFunding.address]
         }
     } else {
         console.log(`contract Address ${(await crowdFunding).address}`)
-        contractAddresses[chainId] = [crowdFunding.address]
+        contractAddresses[chainId].push(crowdFunding.address)
     }
     fs.writeFileSync(crowdFundingAddressFile, JSON.stringify(contractAddresses))
 }
