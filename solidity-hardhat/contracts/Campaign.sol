@@ -37,6 +37,7 @@ contract Campaign is Stake {
         uint256 acceptedWeightage,
         uint256 rejectedWeightage
     );
+    event AmountAlreadyReceived(uint256 requestId);
 
     constructor(uint256 campaignGoal, uint256 minContribution) {
         i_campaignGoal = campaignGoal;
@@ -73,6 +74,7 @@ contract Campaign is Stake {
             revert Campaign__RequestRejected();
         }
         if((s_requests[requestIndex].amountRecieved) == true){
+            emit AmountAlreadyReceived(requestIndex);
             revert Campaign__AmountAlreadyReceived();
         }
         _;
@@ -239,4 +241,5 @@ contract Campaign is Stake {
     ) public view returns (uint256) {
         return timeLeft(s_requests[requestId]);
     }
+    
 }

@@ -18,36 +18,22 @@ module.exports = async (hre) => {
     const chainId = network.config.chainId
 
     log("----------")
-    log(`deployer ${deployer2}`)
+    log(`deployer ${deployer1}`)
     log("----------")
 
-    // const library = await deploy("CampaignLib", {
-    //     from: deployer1,
-    //     args: [],
-    //     log: true,
-    //     waitConfirmation: BLOCK_CONFORMATION,
-    // })
-
-    // const stake = await deploy("Stake", {
-    //     from: deployer1,
-    //     args: [],
-    //     log: true,
-    //     waitConfirmation: BLOCK_CONFORMATION,
-    // })
-
     const crowdFundingContract = await deploy("CrowdFunding", {
-        from: deployer2,
+        from: deployer1,
         args: [],
         log: true,
         waitConfirmation: BLOCK_CONFORMATION,
     })
 
-    const campaignContract = await deploy("Campaign", {
-        from: deployer2,
-        args: [CAMPAGIN_GOAL, MINIMUM_CONTRIBUTION],
-        log: true,
-        waitConfirmation: BLOCK_CONFORMATION,
-    })
+    // const campaignContract = await deploy("Campaign", {
+    //     from: deployer1,
+    //     args: [CAMPAGIN_GOAL, MINIMUM_CONTRIBUTION],
+    //     log: true,
+    //     waitConfirmation: BLOCK_CONFORMATION,
+    // })
 
     const contract = await ethers.getContract("CrowdFunding")
     let addressSigner = await ethers.getSigner(deployer2)
@@ -67,16 +53,16 @@ module.exports = async (hre) => {
     log("------------------------------------")
 
     log(`address of the crowdfunding ${crowdFundingContract.address}`)
-    log(`address of the campaign ${campaignContract.address}`)
+    // log(`address of the campaign ${campaignContract.address}`)
     log("------------------------------------")
 
     if (!developmentChains.includes(network.name)) {
         log("Verifying...")
 
-        await verify(campaignCreation.address, [
-            CAMPAGIN_GOAL,
-            MINIMUM_CONTRIBUTION,
-        ])
+        // await verify(campaignCreation.address, [
+        //     CAMPAGIN_GOAL,
+        //     MINIMUM_CONTRIBUTION,
+        // ])
         await verify(crowdFundingContract.address, [])
     }
 }

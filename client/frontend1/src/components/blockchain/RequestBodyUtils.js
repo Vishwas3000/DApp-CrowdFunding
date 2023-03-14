@@ -1,10 +1,14 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 
 import Alert from "react-bootstrap/Alert"
 
 import { Button } from "react-bootstrap"
 // import { createRequestsForCampaign } from "../../hooks/campaign.js"
-import { StakeInRequestUtil, WithdrawUtil } from "../../solidityUtils/Campaign"
+import {
+    StakeInRequestUtil,
+    WithdrawUtil,
+    GetRequestInfoUtil,
+} from "../../solidityUtils/Campaign"
 import { useSelector } from "react-redux"
 
 export default function RequestBodyUtils({ data }) {
@@ -37,9 +41,7 @@ export default function RequestBodyUtils({ data }) {
         console.log("result of withdraw: ", res)
 
         if (res.status === 200) {
-            alert(
-                `Bingoo,Money transfered to your account! (amt :${res.withdrawedAmount})`
-            )
+            alert(`Bingoo,Money transfered to your account! (amt :${res.msg})`)
             return
         } else {
             alert(`Failed to withdraw your money ,  msg : ${res.msg}`)
@@ -69,6 +71,13 @@ export default function RequestBodyUtils({ data }) {
                     <br />
                 </>
                 Deadline : {data["date"]}
+                <>
+                    <br />
+                </>
+                <>
+                    Current Status:
+                    <br />
+                </>
                 <>
                     <br />
                 </>

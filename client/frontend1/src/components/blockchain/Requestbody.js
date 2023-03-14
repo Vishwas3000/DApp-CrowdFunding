@@ -55,6 +55,7 @@ export default function FundProfile({ info }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target
+        console.log("in handel change: ", name, value)
         setReq((prevState) => ({
             ...prevState,
             [name]: value,
@@ -62,6 +63,7 @@ export default function FundProfile({ info }) {
     }
 
     const handleSubmit = async () => {
+        console.log(`request duration:  ${JSON.stringify(req)}`)
         const contract_result = await MakeRequestUtil(
             profile.addr,
             req.amount,
@@ -107,8 +109,13 @@ export default function FundProfile({ info }) {
                 type="number"
                 placeholder="Enter amount"
             />
-
-            <p>deadline of the request is of 30 min</p>
+            <input
+                name="duration"
+                value={req.duration}
+                onChange={handleChange}
+                type="number"
+                placeholder="Enter duration in min"
+            />
 
             <button onClick={handleSubmit}>Create Request</button>
             <br />

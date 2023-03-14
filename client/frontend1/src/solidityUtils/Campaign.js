@@ -55,6 +55,7 @@ const ContributeUtil = async (campaignAddress, ethValueFromContributer) => {
 
 const WithdrawUtil = async (campaignAddress, requestId) => {
     let txReciept
+    await console.log("request Id", requestId)
 
     try {
         await ConnectToContract(campaignAddress)
@@ -62,7 +63,11 @@ const WithdrawUtil = async (campaignAddress, requestId) => {
         txReciept = await txResponse.wait(BlockWaitTime)
         if (txReciept.status == 1) {
             console.log("transaction reciept: ", txReciept)
-            retReq = { status: 200 }
+            const amountWithdrawed = ethers.utils.formatEther(
+                txReciept.events[1].args.amountWithdrawed
+            )
+            console.log(`Withdrawed ether ${amountWithdrawed}`)
+            retReq = { status: 200, msg: amountWithdrawed }
         }
     } catch (e) {
         error = e
@@ -85,7 +90,6 @@ const MakeRequestUtil = async (
 
     let durationOfRequest = await Math.ceil(durationOfRequestInHours * 60),
         txReciept
-    durationOfRequest = 1800
     console.log(
         "contract address & duration ",
         campaignAddress,
